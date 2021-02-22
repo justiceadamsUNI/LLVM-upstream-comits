@@ -1,0 +1,39 @@
+﻿{
+  // See https://go.microsoft.com//fwlink//?linkid=834763 for more information about this file.
+  {
+    "configurations": [
+      {
+        "name": "LLVM",
+        "generator": "Ninja",
+        "configurationType": "Debug",
+        "inheritEnvironments": [ "msvc_x86_x64" ],
+        "buildRoot": "${projectDir}\\out\\build\\${name}",
+        "installRoot": "${projectDir}\\out\\install\\${name}",
+        "cmakeCommandArgs": "",
+        "buildCommandArgs": "-j 8",
+        "ctestCommandArgs": "",
+        "variables": [
+          {
+            "name": "LLVM_DIR",
+            "value": "C:/Dev/llvm-project/llvm",
+            "type": "STRING"
+          },
+          {
+            "name": "LLVM_ENABLE_PROJECTS",
+            "value": "clang",
+            "type": "STRING"
+          },
+          {
+            "name": "LLVM_PARALLEL_LINK_JOBS",
+            "value": "2",
+            "type": "STRING"
+          },
+          {
+            "name": "LLVM_OPTIMIZED_TABLEGEN",
+            "value": "ON",
+            "type": "BOOL"
+          }
+        ]
+      }
+    ]
+  }
