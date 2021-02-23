@@ -1170,9 +1170,9 @@ static void HandleTopLevelExpression() {
   // Evaluate a top-level expression into an anonymous function.
   if (auto FnAST = ParseTopLevelExpr()) {
     if (FnAST->codegen()) {
-      // Get the default ResourceTracker to track JIT'd memory allocated to our
+      // Create a ResourceTracker to track JIT'd memory allocated to our
       // anonymous expression -- that way we can free it after executing.
-      auto RT = TheJIT->getMainJITDylib().getDefaultResourceTracker();
+      auto RT = TheJIT->getMainJITDylib().createResourceTracker();
 
       auto TSM = ThreadSafeModule(std::move(TheModule), std::move(TheContext));
       ExitOnErr(TheJIT->addModule(std::move(TSM), RT));

@@ -98,6 +98,7 @@ public:
   }
 
   Expected<JITEvaluatedSymbol> lookup(StringRef Name) {
+    ES->dump(dbgs());
     return ES->lookup({&MainJD}, Mangle(Name.str()));
   }
 };
